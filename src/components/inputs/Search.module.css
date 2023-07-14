@@ -1,0 +1,36 @@
+.pesquisar {
+    display: flex;
+    border: 1px solid rgb(143, 143, 143);
+    border-radius: 50px;
+    width: clamp(170px, 21vw, 250px);
+    overflow: hidden;
+    box-shadow: 0 0 10px;
+    color: rgb(100, 197, 241);
+}
+
+.label {
+    border: none;
+    width: clamp(100px, 14vw, 175px);
+    font-size: 0.8em;
+    padding-left: 15px;
+    outline: none;
+    background-color: rgb(204, 204, 204);
+    color: rgb(143, 143, 143);
+
+}
+
+.icon {
+    width: 35px;
+    padding: 0.3em;
+
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    .label {
+        font-size: 0.65em;
+        padding-left: 0;
+    }
+
+}
