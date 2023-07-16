@@ -4,11 +4,12 @@ import Loader from "./Loader";
 import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 
-function PokemonCards() {
+function PokemonCards({ searchContent }) {
   const [pokemons, setPokemons] = useState([]);
   const [totalPokemons, setTotalPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [totalPages, setTotalPages] = useState(0);
   const [pageQt, setPageQt] = useState(500);
   const [offSet, setOffSet] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
@@ -17,7 +18,9 @@ function PokemonCards() {
     try {
       const endpoint = "https://beta.pokeapi.co/graphql/v1beta";
       const query = `query pokeAPIquery {
-        pokemon_v2_pokemon(limit: ${pageQt}, offset: ${offSet}) {
+        pokemon_v2_pokemon(limit: ${pageQt}, offset: ${offSet} ${
+        searchContent ? `, where: {name: {_iregex: "${searchContent}"}}` : ""
+      }){
           id
           name
           pokemon_v2_pokemonsprites {
@@ -29,32 +32,31 @@ function PokemonCards() {
             }
           }
         }
-        pokemon_v2_pokemon_aggregate {
+        pokemon_v2_pokemon_aggregate (where: {name: {_iregex: "${searchContent}"}}) {
           aggregate {
             count
           }
         }
-
-      }
-      `;
+      }`;
 
       const data = await request(endpoint, query);
       setPokemons(data.pokemon_v2_pokemon);
       setTotalPokemons(data.pokemon_v2_pokemon_aggregate.aggregate.count);
       setIsLoading(false);
-
-      console.log(pokemons);
     } catch (error) {
       setError("Erro ao buscar os dados.");
       setIsLoading(false);
     }
   }
-  const totalPages = Math.ceil(totalPokemons / pageQt);
+
   const handleNext = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setPageNumber(pageNumber + 1);
     setOffSet(offSet + pageQt);
   };
+
   const handlePrev = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setPageNumber(pageNumber - 1);
     setOffSet(offSet - pageQt);
   };
@@ -62,7 +64,11 @@ function PokemonCards() {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offSet]);
+  }, [offSet, searchContent]);
+
+  useEffect(() => {
+    setTotalPages(Math.ceil(totalPokemons / pageQt));
+  }, [totalPokemons, pageQt]);
 
   return (
     <div className={styles.main}>
