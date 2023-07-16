@@ -1,0 +1,11 @@
+.main {
+    width: 90vw;
+    padding: 0 4vw;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,84 @@
+.card {
+    height: 400px;
+    width: 250px;
+    background-color: rgb(65, 63, 63);
+    margin: 10px;
+    padding: 30px;
+    border-radius: 30px;
+    background-image: url("../img/pokeball.svg");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: -140px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px;
+    transform: scale(1.02);
+    cursor: pointer;
+
+}
+
+.id,
+.name {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.gif {
+    height: 40px;
+}
+
+.types {
+    list-style: none;
+    display: flex;
+    margin-top: 25px;
+}
+
+.type {
+    width: 70px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+}
+
+
+.img {
+
+    height: 80%;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    z-index: 2;
+
+}
+
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
