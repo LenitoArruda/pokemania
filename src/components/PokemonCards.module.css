@@ -1,6 +1,7 @@
 .main {
     width: 90vw;
-    padding: 0 4vw;
+    padding: 0 4.5vw;
+
 }
 
 .cards {
@@ -8,4 +9,43 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.pagination {
+    display: flex;
+    font-weight: bold;
+    font-size: 25px;
+    justify-content: center;
+
+}
+
+.pagControl {
+    margin: 5% 10%;
+    color: rgb(50, 105, 179);
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: transparent;
+    border: none;
+}
+
+.pagControl:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    color: rgb(5, 49, 105);
+}
+
+.pagControl:disabled {
+    color: rgb(81, 83, 87);
+    transform: scale(1);
+    cursor: default;
+}
+
+.loader {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 200px 0;
 }

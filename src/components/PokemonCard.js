@@ -2,7 +2,6 @@ import styles from "./PokemonCard.module.css";
 
 function PokemonCard({ pokemon }) {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
-  const gifUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`;
   const captalizeFirstChar = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
@@ -75,7 +74,6 @@ function PokemonCard({ pokemon }) {
         >
           {captalizeFirstChar(pokemon.name)}
         </p>
-        <img src={gifUrl} alt={pokemon.name} className={styles.gif} />
       </div>
       <ul className={styles.types}>
         {pokemon.pokemon_v2_pokemontypes.map((type) => (

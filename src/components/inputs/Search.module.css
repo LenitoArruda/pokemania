@@ -1,11 +1,12 @@
 .pesquisar {
     display: flex;
     border: 1px solid rgb(143, 143, 143);
+    background-color: rgb(204, 204, 204);
     border-radius: 50px;
     width: clamp(170px, 21vw, 250px);
     overflow: hidden;
     box-shadow: 0 0 10px;
-    color: rgb(100, 197, 241);
+    color: rgba(50, 105, 179, 0.404);
 }
 
 .label {
@@ -14,7 +15,7 @@
     font-size: 0.8em;
     padding-left: 15px;
     outline: none;
-    background-color: rgb(204, 204, 204);
+    background-color: rgba(204, 204, 204, 0);
     color: rgb(143, 143, 143);
 
 }
