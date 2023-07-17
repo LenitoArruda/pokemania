@@ -20,14 +20,15 @@
 
 @media screen and (max-width: 1100px) {
     .exibition {
-        width: 40%;
-        justify-content: space-between;
+        display: flex;
+        width: 60%;
+        justify-content: center;
     }
 
     .exibition span {
-        width: 50%;
+        width: 60%;
         font-size: 15px;
-        justify-content: space-between;
+
     }
 
     .options {
