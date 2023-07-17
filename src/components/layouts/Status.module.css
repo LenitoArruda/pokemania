@@ -1,0 +1,13 @@
+.container {
+    width: 50%;
+    background-color: rgb(158, 158, 158);
+    height: 20px;
+    border-radius: 50px;
+
+}
+
+.progress {
+    height: 20px;
+    border-radius: 50px;
+    margin-top: 15px;
+}

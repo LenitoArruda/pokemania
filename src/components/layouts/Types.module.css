@@ -1,0 +1,19 @@
+.types {
+    list-style: none;
+    display: flex;
+    margin-top: 25px;
+}
+
+.type {
+    width: 70px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+}

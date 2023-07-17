@@ -1,5 +1,5 @@
-import { request } from "graphql-request";
 import { useEffect, useState } from "react";
+import { fetchData } from "../pokeapi/pokemons";
 
 //CSS
 import styles from "./PokemonCards.module.css";
@@ -8,6 +8,7 @@ import PokemonCard from "./PokemonCard.js";
 import Loader from "./Loader";
 import PageExibition from "../inputs/PageExibition";
 import TypeFilter from "../inputs/TypeFilter";
+import PokemonStats from "./PokemonStats";
 
 export default function PokemonCards({ searchContent }) {
   const [pokemons, setPokemons] = useState([]);
@@ -18,36 +19,14 @@ export default function PokemonCards({ searchContent }) {
   const [pageQt, setPageQt] = useState(50);
   const [offSet, setOffSet] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
+  const [selectedPokemonName, setSelectedPokemonName] = useState(null);
 
   //Coleta os dados da api PokeAPI atraves do graphQL
-  async function fetchData() {
+  async function fetchPokemonData() {
     try {
-      const endpoint = "https://beta.pokeapi.co/graphql/v1beta";
-      const query = `query pokeAPIquery {
-        pokemon_v2_pokemon(limit: ${pageQt}, offset: ${offSet} ${
-        searchContent ? `, where: {name: {_iregex: "${searchContent}"}}` : ""
-      }){
-          id
-          name
-          pokemon_v2_pokemonsprites {
-            sprites
-          }
-          pokemon_v2_pokemontypes {
-            pokemon_v2_type {
-              name
-            }
-          }
-        }
-        pokemon_v2_pokemon_aggregate (where: {name: {_iregex: "${searchContent}"}}) {
-          aggregate {
-            count
-          }
-        }
-      }`;
-
-      const data = await request(endpoint, query);
-      setPokemons(data.pokemon_v2_pokemon);
-      setTotalPokemons(data.pokemon_v2_pokemon_aggregate.aggregate.count);
+      const data = await fetchData(searchContent, pageQt, offSet);
+      setPokemons(data.pokemons);
+      setTotalPokemons(data.totalPokemons);
       setIsLoading(false);
     } catch (error) {
       setError("Erro ao buscar os dados.");
@@ -56,9 +35,16 @@ export default function PokemonCards({ searchContent }) {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchPokemonData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offSet, searchContent, setPageQt]);
+  }, [offSet, searchContent, pageQt]);
+
+  useEffect(() => {
+    setPageNumber(1);
+    setOffSet(0);
+    fetchPokemonData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchContent]);
 
   // Funcionalidades do botão Próximo
   const handleNext = () => {
@@ -85,12 +71,33 @@ export default function PokemonCards({ searchContent }) {
     setOffSet(0);
   };
 
+  //Funções para lidar com o fechamento e abertura do PokemonStats
+  const handlePokemonCardClick = (pokemon) => {
+    setSelectedPokemonName(pokemon.target.alt);
+  };
+  const handleCloseStats = () => {
+    setSelectedPokemonName(null);
+  };
+
   return (
     <div className={styles.main}>
+      {selectedPokemonName ? (
+        <PokemonStats onClose={handleCloseStats} name={selectedPokemonName} />
+      ) : (
+        ""
+      )}
       <div className={styles.menuCards}>
+        <span className={styles.qtdPokemons}>
+          {totalPokemons} {totalPokemons === 1 ? "Pokemon |" : "Pokemons |"}{" "}
+          {offSet} -{" "}
+          {+offSet
+            ? +offSet + pageQt
+            : pageQt > totalPokemons
+            ? totalPokemons
+            : pageQt}
+        </span>
         <PageExibition pagNum={pagNum} />
-        <span className={styles.qtdPokemons}>{totalPokemons} Pokemons</span>
-        <TypeFilter pagNum={pagNum} />
+        {/*<TypeFilter pagNum={pagNum} />*/}
       </div>
       {isLoading ? (
         <div className={styles.loader}>
@@ -101,7 +108,7 @@ export default function PokemonCards({ searchContent }) {
           {error ? (
             <p>{error}</p>
           ) : (
-            <div className={styles.cards}>
+            <div className={styles.cards} onClick={handlePokemonCardClick}>
               {pokemons.map((pokemon) => (
                 <PokemonCard pokemon={pokemon} key={pokemon.id} />
               ))}
@@ -117,6 +124,7 @@ export default function PokemonCards({ searchContent }) {
         >
           {"<< Anterior"}
         </button>
+
         <button
           onClick={handleNext}
           className={styles.pagControl}

@@ -1,8 +1,9 @@
 import styles from "./PokemonCard.module.css";
 import getTypeBackgroundColor from "../../functions/getTypeBackgroundColor";
+import Types from "./Types";
 
 export default function PokemonCard({ pokemon }) {
-  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`;
   //Exibir primeira letra do nome do pokemon em maiúsculo
   const captalizeFirstChar = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -32,7 +33,7 @@ export default function PokemonCard({ pokemon }) {
         <img src={imageUrl} alt={pokemon.name} className={styles.img} />
       </div>
       <div className={styles.footer}>
-        <p
+        <div
           className={styles.name}
           style={{
             color: getTypeBackgroundColor(
@@ -41,23 +42,9 @@ export default function PokemonCard({ pokemon }) {
           }}
         >
           {captalizeFirstChar(pokemon.name)}
-        </p>
+          <Types pokemon={pokemon} />
+        </div>
       </div>
-      <ul className={styles.types}>
-        {pokemon.pokemon_v2_pokemontypes.map((type) => (
-          <li
-            key={type.pokemon_v2_type.name}
-            className={styles.type}
-            style={{
-              backgroundColor: getTypeBackgroundColor(
-                type.pokemon_v2_type.name
-              ),
-            }}
-          >
-            {type.pokemon_v2_type.name}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
