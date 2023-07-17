@@ -185,6 +185,7 @@
 @media screen and (max-width: 730px) {
     .pokemonCard {
         height: 65%;
+        width: 90%;
     }
 
     .rightContent {
