@@ -156,7 +156,13 @@
 }
 
 .statName {
-    width: 60%;
+    width: 75%;
+}
+
+.statNum {
+    width: 5%;
+    font-size: 12px;
+
 }
 
 .progressContainer {
@@ -189,8 +195,12 @@
     }
 
     .statName {
-        width: 75%;
+        width: 70%;
     }
 
+    .statNum {
+        width: 5%;
+        font-size: 9px;
+    }
 
 }

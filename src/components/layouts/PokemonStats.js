@@ -128,7 +128,7 @@ export default function PokemonStats({ onClose, name }) {
                           }}
                         ></div>
                       </div>
-                      <h4>{stat.base_stat}</h4>
+                      <h4 className={styles.statNum}>{stat.base_stat}</h4>
                     </li>
                   ))}
                 </ul>
