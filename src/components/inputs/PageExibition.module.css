@@ -24,6 +24,12 @@
         justify-content: space-between;
     }
 
+    .exibition span {
+        width: 50%;
+        font-size: 15px;
+        justify-content: space-between;
+    }
+
     .options {
         margin-top: 10px;
         padding: 5px 8px;
