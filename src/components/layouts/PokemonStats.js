@@ -116,9 +116,9 @@ export default function PokemonStats({ onClose, name }) {
                 <ul className={styles.stats}>
                   {status.map((stat) => (
                     <li className={styles.stat} key={stat.pokemon_v2_stat.name}>
-                      <h3 className={styles.statName}>
+                      <h4 className={styles.statName}>
                         {stat.pokemon_v2_stat.name}
-                      </h3>
+                      </h4>
                       <div className={styles.progressContainer}>
                         <div
                           className={styles.progress}
@@ -128,7 +128,7 @@ export default function PokemonStats({ onClose, name }) {
                           }}
                         ></div>
                       </div>
-                      <h3>{stat.base_stat}</h3>
+                      <h4>{stat.base_stat}</h4>
                     </li>
                   ))}
                 </ul>

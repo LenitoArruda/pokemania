@@ -63,7 +63,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80%;
+    height: 95%;
     overflow: hidden;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .statName {
-    width: 40%;
+    width: 60%;
 }
 
 .progressContainer {
@@ -187,5 +187,10 @@
         margin-right: 15px;
 
     }
+
+    .statName {
+        width: 75%;
+    }
+
 
 }
