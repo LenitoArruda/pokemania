@@ -2,12 +2,12 @@
 import styles from "./Header.module.css";
 
 //SVG
-import logo from "../img/logo.svg";
+import logo from "../../img/logo.svg";
 
 //COMPONENTS
-import Search from "./inputs/Search";
+import Search from "../inputs/Search";
 
-function Header({ headerToApp }) {
+export default function Header({ headerToApp }) {
   const searchToHeader = (childdata) => {
     headerToApp(childdata);
   };
@@ -21,5 +21,3 @@ function Header({ headerToApp }) {
     </header>
   );
 }
-
-export default Header;

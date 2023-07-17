@@ -1,9 +1,9 @@
 import "./App.css";
 import { useState } from "react";
-import Header from "./components/Header";
-import PokemonCards from "./components/PokemonCards";
+import Header from "./components/layouts/Header";
+import PokemonCards from "./components/layouts/PokemonCards";
 
-function App() {
+export default function App() {
   const [search, setSearch] = useState("");
   const headerToApp = (childdata) => {
     setSearch(childdata);
@@ -18,5 +18,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

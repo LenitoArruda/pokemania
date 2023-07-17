@@ -1,19 +1,25 @@
-import styles from "./PokemonCards.module.css";
-import PokemonCard from "./PokemonCard.js";
-import Loader from "./Loader";
 import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 
-function PokemonCards({ searchContent }) {
+//CSS
+import styles from "./PokemonCards.module.css";
+//COMPONENTES
+import PokemonCard from "./PokemonCard.js";
+import Loader from "./Loader";
+import PageExibition from "../inputs/PageExibition";
+import TypeFilter from "../inputs/TypeFilter";
+
+export default function PokemonCards({ searchContent }) {
   const [pokemons, setPokemons] = useState([]);
   const [totalPokemons, setTotalPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [pageQt, setPageQt] = useState(500);
+  const [pageQt, setPageQt] = useState(50);
   const [offSet, setOffSet] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
 
+  //Coleta os dados da api PokeAPI atraves do graphQL
   async function fetchData() {
     try {
       const endpoint = "https://beta.pokeapi.co/graphql/v1beta";
@@ -49,29 +55,43 @@ function PokemonCards({ searchContent }) {
     }
   }
 
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offSet, searchContent, setPageQt]);
+
+  // Funcionalidades do botão Próximo
   const handleNext = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setPageNumber(pageNumber + 1);
     setOffSet(offSet + pageQt);
   };
 
+  // Funcionalidades do botão Anterior
   const handlePrev = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setPageNumber(pageNumber - 1);
     setOffSet(offSet - pageQt);
   };
 
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offSet, searchContent]);
-
+  //Atualização de total páginas existentes para a lógica dos botoes de paginação
   useEffect(() => {
     setTotalPages(Math.ceil(totalPokemons / pageQt));
   }, [totalPokemons, pageQt]);
 
+  //Dados recebidos do componente PageExibition
+  const pagNum = (childdata) => {
+    setPageQt(childdata);
+    setOffSet(0);
+  };
+
   return (
     <div className={styles.main}>
+      <div className={styles.menuCards}>
+        <PageExibition pagNum={pagNum} />
+        <span className={styles.qtdPokemons}>{totalPokemons} Pokemons</span>
+        <TypeFilter pagNum={pagNum} />
+      </div>
       {isLoading ? (
         <div className={styles.loader}>
           <Loader />
@@ -95,18 +115,16 @@ function PokemonCards({ searchContent }) {
           className={styles.pagControl}
           disabled={pageNumber === 1}
         >
-          {"<< Previous"}
+          {"<< Anterior"}
         </button>
         <button
           onClick={handleNext}
           className={styles.pagControl}
           disabled={pageNumber === totalPages}
         >
-          {"Next >>"}
+          {"Próximo >>"}
         </button>
       </div>
     </div>
   );
 }
-
-export default PokemonCards;

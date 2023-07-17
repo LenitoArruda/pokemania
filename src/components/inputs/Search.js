@@ -1,7 +1,7 @@
 import styles from "./Search.module.css";
 import icon from "../../img/search.svg";
 
-function Search({ searchToHeader }) {
+export default function Search({ searchToHeader }) {
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
     searchToHeader(inputValue);
@@ -19,5 +19,3 @@ function Search({ searchToHeader }) {
     </div>
   );
 }
-
-export default Search;

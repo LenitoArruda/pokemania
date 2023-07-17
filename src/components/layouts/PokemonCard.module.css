@@ -5,7 +5,7 @@
     margin: 10px;
     padding: 30px;
     border-radius: 30px;
-    background-image: url("../img/pokeball.svg");
+    background-image: url("../../img/pokeball.svg");
     background-size: 80%;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -14,7 +14,7 @@
 }
 
 .card:hover {
-    box-shadow: 0 0 10px;
+    box-shadow: 0 0 15px;
     transform: scale(1.02);
     cursor: pointer;
 
