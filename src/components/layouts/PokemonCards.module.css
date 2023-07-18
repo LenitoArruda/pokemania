@@ -1,6 +1,6 @@
 .main {
-    width: 90vw;
-    padding: 0 4.5vw;
+    width: 100%;
+
 
 }
 
@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .pagination {
@@ -53,7 +54,7 @@
 .menuCards {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 1.5% 4%;
 }
 
@@ -75,5 +76,10 @@
         justify-content: center;
         flex-direction: column;
 
+    }
+
+    .pagControl {
+        font-size: 20px;
+        width: 100%;
     }
 }

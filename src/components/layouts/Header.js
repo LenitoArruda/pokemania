@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 //SVG
 import logo from "../../img/logo.svg";
 
-//COMPONENTS
+//Componentes
 import Search from "../inputs/Search";
 
 export default function Header({ headerToApp }) {

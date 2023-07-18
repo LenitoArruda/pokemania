@@ -1,0 +1,42 @@
+.linksContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.svgIcons {
+    display: flex;
+    background-size: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    transition: filter 0.01s;
+    padding: 5px;
+}
+
+.svgIcons:hover {
+    filter: invert(27%) sepia(0%) saturate(2878%) hue-rotate(346deg) brightness(70%) contrast(97%);
+    cursor: pointer;
+}
+
+.facebook {
+    background-image: url("../../img/socialIcons/facebook.svg");
+}
+
+.instagram {
+    background-image: url("../../img/socialIcons/instagram.svg");
+}
+
+.github {
+    background-image: url("../../img/socialIcons/github.svg");
+}
+
+.linkedin {
+    background-image: url("../../img/socialIcons/linkedin.svg");
+}
+
+.mail {
+    background-image: url("../../img/socialIcons/mail.svg");
+}

@@ -1,5 +1,8 @@
+//CSS
 import styles from "./PokemonCard.module.css";
+//Funcionalidades
 import getTypeBackgroundColor from "../../functions/getTypeBackgroundColor";
+//Componentes
 import Types from "./Types";
 
 export default function PokemonCard({ pokemon }) {

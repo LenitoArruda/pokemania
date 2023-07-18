@@ -1,4 +1,6 @@
+//CSS
 import styles from "./Types.module.css";
+//Funcionalidades
 import getTypeBackgroundColor from "../../functions/getTypeBackgroundColor";
 
 export default function Types({ pokemon }) {

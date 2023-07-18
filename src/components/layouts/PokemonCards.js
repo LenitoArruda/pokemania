@@ -3,7 +3,7 @@ import { fetchData } from "../pokeapi/pokemons";
 
 //CSS
 import styles from "./PokemonCards.module.css";
-//COMPONENTES
+//Componentes
 import PokemonCard from "./PokemonCard.js";
 import Loader from "./Loader";
 import PageExibition from "../inputs/PageExibition";
@@ -39,6 +39,8 @@ export default function PokemonCards({ searchContent }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offSet, searchContent, pageQt]);
 
+  //Atualiza os pokemons, o numero da pagina para 1 e a posição inicial (offSet)
+  //da pesquisa no graphql toda vez que o usuario digita algo
   useEffect(() => {
     setPageNumber(1);
     setOffSet(0);

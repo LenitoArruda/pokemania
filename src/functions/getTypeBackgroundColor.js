@@ -38,7 +38,6 @@ const getTypeBackgroundColor = (type) => {
       return "rgb(43, 0, 0)";
     case "shadow":
       return "rgb(52, 45, 70)";
-    // Adicione mais casos para outros tipos de Pokémon
     default:
       return "rgb(223, 220, 220)";
   }
