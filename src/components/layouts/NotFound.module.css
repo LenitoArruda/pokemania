@@ -1,0 +1,20 @@
+.notfoundContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45vh;
+    width: 100%;
+    padding: 50px 0;
+}
+
+img {
+    width: 70px;
+    margin-right: 20px;
+}
+
+span {
+    font-weight: bold;
+    color: rgb(81, 83, 87);
+    font-size: 25px;
+
+}

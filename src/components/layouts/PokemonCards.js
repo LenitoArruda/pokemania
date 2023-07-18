@@ -9,6 +9,7 @@ import Loader from "./Loader";
 import PageExibition from "../inputs/PageExibition";
 import TypeFilter from "../inputs/TypeFilter";
 import PokemonStats from "./PokemonStats";
+import NotFound from "./NotFound";
 
 export default function PokemonCards({ searchContent }) {
   const [pokemons, setPokemons] = useState([]);
@@ -90,7 +91,7 @@ export default function PokemonCards({ searchContent }) {
       )}
       <div className={styles.menuCards}>
         <span className={styles.qtdPokemons}>
-          {totalPokemons} {totalPokemons === 1 ? "Pokemon |" : "Pokemons |"}{" "}
+          {totalPokemons} {totalPokemons <= 1 ? "Pokemon |" : "Pokemons |"}{" "}
           {offSet} -{" "}
           {+offSet
             ? +offSet + pageQt
@@ -108,7 +109,9 @@ export default function PokemonCards({ searchContent }) {
       ) : (
         <>
           {error ? (
-            <p>{error}</p>
+            <NotFound />
+          ) : totalPokemons === 0 ? (
+            <NotFound />
           ) : (
             <div className={styles.cards} onClick={handlePokemonCardClick}>
               {pokemons.map((pokemon) => (
