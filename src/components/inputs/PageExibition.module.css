@@ -7,6 +7,7 @@
     color: rgb(50, 105, 179);
     font-size: 20px;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 .options {
@@ -27,6 +28,7 @@
     .exibition span {
         width: 60%;
         font-size: 15px;
+        margin-right: 0;
 
     }
 

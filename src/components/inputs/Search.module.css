@@ -13,10 +13,10 @@
     border: none;
     width: clamp(100px, 14vw, 175px);
     font-size: 0.8em;
-    padding-left: 15px;
     outline: none;
     background-color: rgba(204, 204, 204, 0);
     color: rgb(143, 143, 143);
+    margin-left: -10px;
 
 }
 
@@ -32,6 +32,7 @@
     .label {
         font-size: 0.65em;
         padding-left: 0;
+        margin-left: -17px;
     }
 
 }

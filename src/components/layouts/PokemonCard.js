@@ -7,6 +7,7 @@ import Types from "./Types";
 
 export default function PokemonCard({ pokemon }) {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`;
+
   //Exibir primeira letra do nome do pokemon em maiúsculo
   const captalizeFirstChar = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);

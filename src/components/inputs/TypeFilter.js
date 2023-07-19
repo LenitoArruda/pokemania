@@ -12,7 +12,7 @@ export default function TypeFilter({ pagNum }) {
       <select
         className={styles.options}
         onChange={handleSelectChange}
-        defaultValue="50"
+        defaultValue="100"
       >
         <option value="10">10</option>
         <option value="50">50</option>

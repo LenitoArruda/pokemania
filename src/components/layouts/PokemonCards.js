@@ -7,7 +7,7 @@ import styles from "./PokemonCards.module.css";
 import PokemonCard from "./PokemonCard.js";
 import Loader from "./Loader";
 import PageExibition from "../inputs/PageExibition";
-import TypeFilter from "../inputs/TypeFilter";
+//import TypeFilter from "../inputs/TypeFilter";
 import PokemonStats from "./PokemonStats";
 import NotFound from "./NotFound";
 
@@ -17,7 +17,7 @@ export default function PokemonCards({ searchContent }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [pageQt, setPageQt] = useState(50);
+  const [pageQt, setPageQt] = useState(100);
   const [offSet, setOffSet] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
@@ -34,11 +34,14 @@ export default function PokemonCards({ searchContent }) {
       setIsLoading(false);
     }
   }
+  useEffect(() => {
+    setPageNumber(1);
+  }, [pageQt]);
 
   useEffect(() => {
     fetchPokemonData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offSet, searchContent, pageQt]);
+  }, [offSet, pageQt]);
 
   //Atualiza os pokemons, o numero da pagina para 1 e a posição inicial (offSet)
   //da pesquisa no graphql toda vez que o usuario digita algo
@@ -70,7 +73,7 @@ export default function PokemonCards({ searchContent }) {
 
   //Dados recebidos do componente PageExibition
   const pagNum = (childdata) => {
-    setPageQt(childdata);
+    setPageQt(parseInt(childdata));
     setOffSet(0);
   };
 
