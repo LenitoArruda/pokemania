@@ -7,6 +7,7 @@ import "./App.css";
 import Header from "./components/layouts/Header";
 import Footer from "./components/inputs/Footer";
 import PokemonCards from "./components/layouts/PokemonCards";
+import TopPage from "./components/layouts/TopPage";
 
 //Recebe os dados digitados pelo usuário no Header->Search e envia para o PokemonCards
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <Header headerToApp={headerToApp} />
       <main>
         <PokemonCards searchContent={search} />
+        <TopPage />
       </main>
       <Footer />
     </div>

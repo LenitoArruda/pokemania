@@ -1,4 +1,4 @@
-const getTypeBackgroundColor = (type) => {
+function getTypeBackgroundColor(type) {
   switch (type) {
     case "grass":
       return "rgb(107, 207, 132)";
@@ -41,6 +41,6 @@ const getTypeBackgroundColor = (type) => {
     default:
       return "rgb(223, 220, 220)";
   }
-};
+}
 
-module.exports = getTypeBackgroundColor;
+export default getTypeBackgroundColor;

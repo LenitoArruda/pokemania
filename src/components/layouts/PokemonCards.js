@@ -7,7 +7,7 @@ import styles from "./PokemonCards.module.css";
 import PokemonCard from "./PokemonCard.js";
 import Loader from "./Loader";
 import PageExibition from "../inputs/PageExibition";
-//import TypeFilter from "../inputs/TypeFilter";
+import TypeFilter from "../inputs/TypeFilter";
 import PokemonStats from "./PokemonStats";
 import NotFound from "./NotFound";
 
@@ -17,7 +17,7 @@ export default function PokemonCards({ searchContent }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [pageQt, setPageQt] = useState(100);
+  const [pageQt, setPageQt] = useState(50);
   const [offSet, setOffSet] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
@@ -93,6 +93,7 @@ export default function PokemonCards({ searchContent }) {
         ""
       )}
       <div className={styles.menuCards}>
+        <TypeFilter pagNum={pagNum} />
         <span className={styles.qtdPokemons}>
           {totalPokemons} {totalPokemons <= 1 ? "Pokemon |" : "Pokemons |"}{" "}
           {offSet} -{" "}
@@ -103,7 +104,6 @@ export default function PokemonCards({ searchContent }) {
             : pageQt}
         </span>
         <PageExibition pagNum={pagNum} />
-        {/*<TypeFilter pagNum={pagNum} />*/}
       </div>
       {isLoading ? (
         <div className={styles.loader}>

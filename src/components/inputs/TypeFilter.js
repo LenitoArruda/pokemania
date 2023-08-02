@@ -1,9 +1,9 @@
 import styles from "./TypeFilter.module.css";
 
-export default function TypeFilter({ pagNum }) {
+export default function TypeFilter({ pokemonTypes, pokemonType }) {
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
-    pagNum(selectedValue);
+    pokemonType(selectedValue);
   };
 
   return (
@@ -12,12 +12,9 @@ export default function TypeFilter({ pagNum }) {
       <select
         className={styles.options}
         onChange={handleSelectChange}
-        defaultValue="100"
+        defaultValue="todos"
       >
-        <option value="10">10</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="500">500</option>
+        <option value="todos">Todos pokemons</option>
       </select>
     </div>
   );
